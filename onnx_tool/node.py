@@ -131,6 +131,7 @@ class Node():
         self.output = []
         self.input = []
         self.proto = n
+        self.domain=n.domain
         self.shape_calc = False
         self.attr = {}
         for att in n.attribute:
@@ -149,7 +150,7 @@ class Node():
             setattr(self, attname, defaultvalue)
 
     def make_nodeproto(self):
-        return onnx.helper.make_node(self.op_type, self.input, self.output, self.name, **self.attr)
+        return onnx.helper.make_node(self.op_type, self.input, self.output, self.name,domain=self.domain, **self.attr)
 
     def shape_infer(self, intensors: List[Tensor], outtensors: List[Tensor]):
         self.value_infer(intensors, outtensors)

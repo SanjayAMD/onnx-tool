@@ -44,6 +44,8 @@ def onnxdtype2npdtype(data_type):
         return numpy.int32
     if data_type == onnx.TensorProto.INT16:
         return numpy.int16
+    if data_type == onnx.TensorProto.UINT16:
+        return numpy.uint16
     if data_type == onnx.TensorProto.INT64:
         return numpy.int64
     if data_type == onnx.TensorProto.INT8:
@@ -73,6 +75,8 @@ def npdtype2onnxdtype(npdtype):
         return onnx.TensorProto.INT16
     if npdtype == numpy.int64:
         return onnx.TensorProto.INT64
+    if npdtype == numpy.uint16:
+        return onnx.TensorProto.UINT16
     if npdtype == numpy.int8:
         return onnx.TensorProto.INT8
     if npdtype == numpy.uint8:
@@ -370,7 +374,7 @@ class Tensor():
             self.shape = []
             self.numpy = None
             self.type = DYNAMIC_TENSOR if t != '' else STATIC_TENSOR
-            self.dtype = numpy.float32
+            self.dtype = numpy.int16
         elif isinstance(t, onnx.ValueInfoProto):
             self.name = t.name
             self.proto = t
