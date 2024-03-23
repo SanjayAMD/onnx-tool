@@ -797,7 +797,7 @@ class Graph():
             warnings.warn(f'Empty graph {f} to save')
             return
         graph = self.make_graph_onnx(self.nodemap.keys(), 'graph', self.input, self.output,
-                                     with_initializer=not shape_only, with_shape_info=not no_shape)
+                                     with_initializer=True, with_shape_info=True)
         if graph is not None and f is not None:
             attr = {}
             attr['producer_name'] = 'onnx_tool'
