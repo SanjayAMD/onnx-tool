@@ -621,8 +621,8 @@ class Graph():
                 if len(self.producedby[o]) == 0:
                     self.producedby.pop(o)
 
-                if o in self.output:
-                    self.output.remove(o)
+                # if o in self.output:
+                #     self.output.remove(o)
 
         # update consumer
         for i in node.input:
