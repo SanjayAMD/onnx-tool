@@ -111,7 +111,19 @@ def tensorproto2ndarray(initial):
 
         elif ndtype == numpy.float64:
             arr = numpy.fromiter(initial.double_data, dtype=ndtype)
+        elif ndtype == numpy.int16:
+            raw = list(initial.int16_data)
+            arr= numpy.fromiter(raw, dtype=numpy.int16)
 
+        elif ndtype == numpy.uint16:
+            raw = list(initial.int16_data)
+            arr= numpy.fromiter(raw, dtype=numpy.uint16)
+        elif ndtype==numpy.int8:
+            raw = list(initial.int8_data)
+            arr= numpy.fromiter(raw, dtype=numpy.int8)
+        elif ndtype==numpy.uint8:
+            raw = list(initial.int8_data)
+            arr= numpy.fromiter(raw, dtype=numpy.uint8)
         elif ndtype == numpy.string_:
             arr = numpy.array(initial.string_data, dtype=ndtype)
     else:
